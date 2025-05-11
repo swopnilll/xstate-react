@@ -1,17 +1,17 @@
 import Switch from "react-switch";
 import { useAlarmToggle } from "./hooks/toggleAlarm/useAlarmToggle";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 export const ToggleUseState = () => {
   const {status, toggleAlarm} = useAlarmToggle();
 
-  const [renderCount, setRenderCount] = useState(0);
+  const renderCount = useRef(0);
 
   // Increment render count on every render
   useEffect(() => {
-    setRenderCount((prevCount) => prevCount + 1);
-  }, []);
+    renderCount.current += 1;
+  });
 
   return (
     <div className={`flex flex-col items-center justify-center h-screen bg-gray-500`} >
@@ -20,7 +20,7 @@ export const ToggleUseState = () => {
       </div>
 
       <div>
-        page rended {renderCount} times
+        page rended {renderCount.current} times
       </div>
 
     </div>
