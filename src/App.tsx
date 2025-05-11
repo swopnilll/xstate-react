@@ -1,4 +1,5 @@
-import { ToggleUseState } from "./ToggleUseState"
+import { ToggleUseReducer } from "./ToggleUseReducer"
+
 
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <>
-     <ToggleUseState />
+     <ToggleUseReducer />
     </>
   )
 }
