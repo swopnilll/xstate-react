@@ -1,11 +1,12 @@
-import { ToggleUseReducerMachine } from "./ToggleUseReducerMachine"
+import Timer from "./Timer"
+
 
 
 function App() {
 
   return (
     <>
-     <ToggleUseReducerMachine />
+     <Timer />
     </>
   )
 }
