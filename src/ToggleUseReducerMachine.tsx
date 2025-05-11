@@ -1,8 +1,11 @@
 import Switch from "react-switch";
-import { useAlarmToggleReducer } from "./hooks/toggleAlarm/useAlarmToggleReducer";
+import { useAlarmToggleReducerMachine } from "./machines/AlarmMachine";
 
-export const ToggleUseReducer = () => {
-  const {status, toggleAlarm} = useAlarmToggleReducer();
+
+
+
+export const ToggleUseReducerMachine = () => {
+  const {status, toggleAlarm} = useAlarmToggleReducerMachine();
 
   return (
     <div className={`flex flex-col items-center justify-center h-screen bg-gray-500`} >

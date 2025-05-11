@@ -1,13 +1,11 @@
-import { ToggleUseReducer } from "./ToggleUseReducer"
-
+import { ToggleUseReducerMachine } from "./ToggleUseReducerMachine"
 
 
 function App() {
 
-
   return (
     <>
-     <ToggleUseReducer />
+     <ToggleUseReducerMachine />
     </>
   )
 }
