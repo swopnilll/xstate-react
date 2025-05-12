@@ -17,6 +17,7 @@ import { Route as ToggleUsingXstateImport } from './routes/toggle/using-xstate'
 import { Route as ToggleUsingUsestateImport } from './routes/toggle/using-usestate'
 import { Route as ToggleUsingUsereducermachineImport } from './routes/toggle/using-usereducermachine'
 import { Route as ToggleUsingUsereducerImport } from './routes/toggle/using-usereducer'
+import { Route as TimerUsingXstateTimerImport } from './routes/timer/using-xstate-timer'
 import { Route as TimerUsingReducerMachineImport } from './routes/timer/using-reducer-machine'
 
 // Create/Update Routes
@@ -58,6 +59,12 @@ const ToggleUsingUsereducerRoute = ToggleUsingUsereducerImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const TimerUsingXstateTimerRoute = TimerUsingXstateTimerImport.update({
+  id: '/timer/using-xstate-timer',
+  path: '/timer/using-xstate-timer',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const TimerUsingReducerMachineRoute = TimerUsingReducerMachineImport.update({
   id: '/timer/using-reducer-machine',
   path: '/timer/using-reducer-machine',
@@ -87,6 +94,13 @@ declare module '@tanstack/react-router' {
       path: '/timer/using-reducer-machine'
       fullPath: '/timer/using-reducer-machine'
       preLoaderRoute: typeof TimerUsingReducerMachineImport
+      parentRoute: typeof rootRoute
+    }
+    '/timer/using-xstate-timer': {
+      id: '/timer/using-xstate-timer'
+      path: '/timer/using-xstate-timer'
+      fullPath: '/timer/using-xstate-timer'
+      preLoaderRoute: typeof TimerUsingXstateTimerImport
       parentRoute: typeof rootRoute
     }
     '/toggle/using-usereducer': {
@@ -126,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/timer/using-reducer-machine': typeof TimerUsingReducerMachineRoute
+  '/timer/using-xstate-timer': typeof TimerUsingXstateTimerRoute
   '/toggle/using-usereducer': typeof ToggleUsingUsereducerRoute
   '/toggle/using-usereducermachine': typeof ToggleUsingUsereducermachineRoute
   '/toggle/using-usestate': typeof ToggleUsingUsestateRoute
@@ -136,6 +151,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/timer/using-reducer-machine': typeof TimerUsingReducerMachineRoute
+  '/timer/using-xstate-timer': typeof TimerUsingXstateTimerRoute
   '/toggle/using-usereducer': typeof ToggleUsingUsereducerRoute
   '/toggle/using-usereducermachine': typeof ToggleUsingUsereducermachineRoute
   '/toggle/using-usestate': typeof ToggleUsingUsestateRoute
@@ -147,6 +163,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/timer/using-reducer-machine': typeof TimerUsingReducerMachineRoute
+  '/timer/using-xstate-timer': typeof TimerUsingXstateTimerRoute
   '/toggle/using-usereducer': typeof ToggleUsingUsereducerRoute
   '/toggle/using-usereducermachine': typeof ToggleUsingUsereducermachineRoute
   '/toggle/using-usestate': typeof ToggleUsingUsestateRoute
@@ -159,6 +176,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/timer/using-reducer-machine'
+    | '/timer/using-xstate-timer'
     | '/toggle/using-usereducer'
     | '/toggle/using-usereducermachine'
     | '/toggle/using-usestate'
@@ -168,6 +186,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/timer/using-reducer-machine'
+    | '/timer/using-xstate-timer'
     | '/toggle/using-usereducer'
     | '/toggle/using-usereducermachine'
     | '/toggle/using-usestate'
@@ -177,6 +196,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/timer/using-reducer-machine'
+    | '/timer/using-xstate-timer'
     | '/toggle/using-usereducer'
     | '/toggle/using-usereducermachine'
     | '/toggle/using-usestate'
@@ -188,6 +208,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   TimerUsingReducerMachineRoute: typeof TimerUsingReducerMachineRoute
+  TimerUsingXstateTimerRoute: typeof TimerUsingXstateTimerRoute
   ToggleUsingUsereducerRoute: typeof ToggleUsingUsereducerRoute
   ToggleUsingUsereducermachineRoute: typeof ToggleUsingUsereducermachineRoute
   ToggleUsingUsestateRoute: typeof ToggleUsingUsestateRoute
@@ -198,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   TimerUsingReducerMachineRoute: TimerUsingReducerMachineRoute,
+  TimerUsingXstateTimerRoute: TimerUsingXstateTimerRoute,
   ToggleUsingUsereducerRoute: ToggleUsingUsereducerRoute,
   ToggleUsingUsereducermachineRoute: ToggleUsingUsereducermachineRoute,
   ToggleUsingUsestateRoute: ToggleUsingUsestateRoute,
@@ -217,6 +239,7 @@ export const routeTree = rootRoute
         "/",
         "/about",
         "/timer/using-reducer-machine",
+        "/timer/using-xstate-timer",
         "/toggle/using-usereducer",
         "/toggle/using-usereducermachine",
         "/toggle/using-usestate",
@@ -231,6 +254,9 @@ export const routeTree = rootRoute
     },
     "/timer/using-reducer-machine": {
       "filePath": "timer/using-reducer-machine.tsx"
+    },
+    "/timer/using-xstate-timer": {
+      "filePath": "timer/using-xstate-timer.tsx"
     },
     "/toggle/using-usereducer": {
       "filePath": "toggle/using-usereducer.tsx"

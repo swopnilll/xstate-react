@@ -42,10 +42,17 @@ export const Route = createRootRoute({
 
           <hr />
           <Link
-            to="/toggle/using-usereducermachine"
+            to="/toggle/using-xstate"
             className="[&.active]:font-bold hover:text-gray-300 transition"
           >
             Toggle using XState
+          </Link>
+
+          <Link
+            to="/timer/using-xstate-timer"
+            className="[&.active]:font-bold hover:text-gray-300 transition"
+          >
+            Timer using XState
           </Link>
         </nav>
       </aside>
