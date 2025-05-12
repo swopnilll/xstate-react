@@ -1,4 +1,5 @@
-import Timer from "./Timer"
+import { RouterProvider } from '@tanstack/react-router'
+import { router } from './main'
 
 
 
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <>
-     <Timer />
+    <RouterProvider router={router} />
     </>
   )
 }

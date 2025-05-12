@@ -1,7 +1,8 @@
 import Switch from "react-switch";
-import { useAlarmToggleReducerMachine } from "./machines/AlarmMachine";
+import { useAlarmToggleReducerMachine } from "../machines/AlarmMachine";
 
-export const ToggleUseReducerMachine = () => {
+
+export const ToggleXState = () => {
   const {status, toggleAlarm} = useAlarmToggleReducerMachine();
 
   return (
