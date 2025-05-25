@@ -1,54 +1,66 @@
-# React + TypeScript + Vite
+# 🧠 XState for React – Cheatsheet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This cheatsheet showcases basic to intermediate usage of [XState](https://xstate.js.org/) in a modern React environment using `@xstate/react`, `@tanstack/react-router`, and functional components.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✅ 1. Counter Example – Entry Actions & Context
 
-## Expanding the ESLint configuration
+**Demonstrates:**
+- Machine definition with context
+- Entry actions to update context
+- Simple state transitions
+- Using `useActor` with inline machine
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 📄 `/cheatsheet/Counter`
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
+```ts
+import { createFileRoute } from "@tanstack/react-router";
+import { setup, assign } from "xstate";
+import { useActor } from "@xstate/react";
+
+export const Route = createFileRoute("/cheatsheet/Counter")({
+  component: RouteComponent,
+});
+
+function RouteComponent() {
+  return <Counter />;
+}
+
+const toggleMachine = setup({}).createMachine({
+  id: "toggle",
+  initial: "active",
+  context: { count: 0 },
+  states: {
+    active: {
+      entry: assign({
+        count: ({ context }) => context.count + 1,
+      }),
+      on: {
+        TOGGLE: { target: "inactive" },
+      },
+    },
+    inactive: {
+      on: {
+        TOGGLE: { target: "active" },
+      },
     },
   },
-})
-```
+});
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+const Counter = () => {
+  const [state, send] = useActor(toggleMachine);
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+  return (
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 text-black">
+      <h1 className="text-2xl font-bold mb-4 text-black mt-4">
+        Counter Example
+      </h1>
+      <div style={{ padding: "20px" }}>
+        <h2>State: {state.value}</h2>
+        <p>Active count: {state.context.count}</p>
+        <button onClick={() => send({ type: "TOGGLE" })}>Toggle</button>
+      </div>
+    </div>
+  );
+};
