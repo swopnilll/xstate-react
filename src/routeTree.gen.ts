@@ -19,6 +19,7 @@ import { Route as ToggleUsingUsereducermachineImport } from './routes/toggle/usi
 import { Route as ToggleUsingUsereducerImport } from './routes/toggle/using-usereducer'
 import { Route as TimerUsingXstateTimerImport } from './routes/timer/using-xstate-timer'
 import { Route as TimerUsingReducerMachineImport } from './routes/timer/using-reducer-machine'
+import { Route as CheatsheetFetchDogImport } from './routes/cheatsheet/FetchDog'
 import { Route as CheatsheetCounterImport } from './routes/cheatsheet/Counter'
 
 // Create/Update Routes
@@ -72,6 +73,12 @@ const TimerUsingReducerMachineRoute = TimerUsingReducerMachineImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const CheatsheetFetchDogRoute = CheatsheetFetchDogImport.update({
+  id: '/cheatsheet/FetchDog',
+  path: '/cheatsheet/FetchDog',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const CheatsheetCounterRoute = CheatsheetCounterImport.update({
   id: '/cheatsheet/Counter',
   path: '/cheatsheet/Counter',
@@ -101,6 +108,13 @@ declare module '@tanstack/react-router' {
       path: '/cheatsheet/Counter'
       fullPath: '/cheatsheet/Counter'
       preLoaderRoute: typeof CheatsheetCounterImport
+      parentRoute: typeof rootRoute
+    }
+    '/cheatsheet/FetchDog': {
+      id: '/cheatsheet/FetchDog'
+      path: '/cheatsheet/FetchDog'
+      fullPath: '/cheatsheet/FetchDog'
+      preLoaderRoute: typeof CheatsheetFetchDogImport
       parentRoute: typeof rootRoute
     }
     '/timer/using-reducer-machine': {
@@ -154,6 +168,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cheatsheet/Counter': typeof CheatsheetCounterRoute
+  '/cheatsheet/FetchDog': typeof CheatsheetFetchDogRoute
   '/timer/using-reducer-machine': typeof TimerUsingReducerMachineRoute
   '/timer/using-xstate-timer': typeof TimerUsingXstateTimerRoute
   '/toggle/using-usereducer': typeof ToggleUsingUsereducerRoute
@@ -166,6 +181,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cheatsheet/Counter': typeof CheatsheetCounterRoute
+  '/cheatsheet/FetchDog': typeof CheatsheetFetchDogRoute
   '/timer/using-reducer-machine': typeof TimerUsingReducerMachineRoute
   '/timer/using-xstate-timer': typeof TimerUsingXstateTimerRoute
   '/toggle/using-usereducer': typeof ToggleUsingUsereducerRoute
@@ -179,6 +195,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cheatsheet/Counter': typeof CheatsheetCounterRoute
+  '/cheatsheet/FetchDog': typeof CheatsheetFetchDogRoute
   '/timer/using-reducer-machine': typeof TimerUsingReducerMachineRoute
   '/timer/using-xstate-timer': typeof TimerUsingXstateTimerRoute
   '/toggle/using-usereducer': typeof ToggleUsingUsereducerRoute
@@ -193,6 +210,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/cheatsheet/Counter'
+    | '/cheatsheet/FetchDog'
     | '/timer/using-reducer-machine'
     | '/timer/using-xstate-timer'
     | '/toggle/using-usereducer'
@@ -204,6 +222,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/cheatsheet/Counter'
+    | '/cheatsheet/FetchDog'
     | '/timer/using-reducer-machine'
     | '/timer/using-xstate-timer'
     | '/toggle/using-usereducer'
@@ -215,6 +234,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/cheatsheet/Counter'
+    | '/cheatsheet/FetchDog'
     | '/timer/using-reducer-machine'
     | '/timer/using-xstate-timer'
     | '/toggle/using-usereducer'
@@ -228,6 +248,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CheatsheetCounterRoute: typeof CheatsheetCounterRoute
+  CheatsheetFetchDogRoute: typeof CheatsheetFetchDogRoute
   TimerUsingReducerMachineRoute: typeof TimerUsingReducerMachineRoute
   TimerUsingXstateTimerRoute: typeof TimerUsingXstateTimerRoute
   ToggleUsingUsereducerRoute: typeof ToggleUsingUsereducerRoute
@@ -240,6 +261,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CheatsheetCounterRoute: CheatsheetCounterRoute,
+  CheatsheetFetchDogRoute: CheatsheetFetchDogRoute,
   TimerUsingReducerMachineRoute: TimerUsingReducerMachineRoute,
   TimerUsingXstateTimerRoute: TimerUsingXstateTimerRoute,
   ToggleUsingUsereducerRoute: ToggleUsingUsereducerRoute,
@@ -261,6 +283,7 @@ export const routeTree = rootRoute
         "/",
         "/about",
         "/cheatsheet/Counter",
+        "/cheatsheet/FetchDog",
         "/timer/using-reducer-machine",
         "/timer/using-xstate-timer",
         "/toggle/using-usereducer",
@@ -277,6 +300,9 @@ export const routeTree = rootRoute
     },
     "/cheatsheet/Counter": {
       "filePath": "cheatsheet/Counter.tsx"
+    },
+    "/cheatsheet/FetchDog": {
+      "filePath": "cheatsheet/FetchDog.tsx"
     },
     "/timer/using-reducer-machine": {
       "filePath": "timer/using-reducer-machine.tsx"

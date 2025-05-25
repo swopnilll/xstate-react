@@ -63,6 +63,13 @@ export const Route = createRootRoute({
           >
             Counter
           </Link>
+
+          <Link
+            to="/cheatsheet/FetchDog"
+            className="[&.active]:font-bold hover:text-gray-300 transition"
+          >
+            Fetch Dog Image
+          </Link>
         </nav>
       </aside>
 
