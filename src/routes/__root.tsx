@@ -54,6 +54,15 @@ export const Route = createRootRoute({
           >
             Timer using XState
           </Link>
+
+          <hr />
+
+          <Link
+            to="/cheatsheet/Counter"
+            className="[&.active]:font-bold hover:text-gray-300 transition"
+          >
+            Counter
+          </Link>
         </nav>
       </aside>
 

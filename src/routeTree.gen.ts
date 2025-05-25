@@ -19,6 +19,7 @@ import { Route as ToggleUsingUsereducermachineImport } from './routes/toggle/usi
 import { Route as ToggleUsingUsereducerImport } from './routes/toggle/using-usereducer'
 import { Route as TimerUsingXstateTimerImport } from './routes/timer/using-xstate-timer'
 import { Route as TimerUsingReducerMachineImport } from './routes/timer/using-reducer-machine'
+import { Route as CheatsheetCounterImport } from './routes/cheatsheet/Counter'
 
 // Create/Update Routes
 
@@ -71,6 +72,12 @@ const TimerUsingReducerMachineRoute = TimerUsingReducerMachineImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const CheatsheetCounterRoute = CheatsheetCounterImport.update({
+  id: '/cheatsheet/Counter',
+  path: '/cheatsheet/Counter',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -87,6 +94,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutImport
+      parentRoute: typeof rootRoute
+    }
+    '/cheatsheet/Counter': {
+      id: '/cheatsheet/Counter'
+      path: '/cheatsheet/Counter'
+      fullPath: '/cheatsheet/Counter'
+      preLoaderRoute: typeof CheatsheetCounterImport
       parentRoute: typeof rootRoute
     }
     '/timer/using-reducer-machine': {
@@ -139,6 +153,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/cheatsheet/Counter': typeof CheatsheetCounterRoute
   '/timer/using-reducer-machine': typeof TimerUsingReducerMachineRoute
   '/timer/using-xstate-timer': typeof TimerUsingXstateTimerRoute
   '/toggle/using-usereducer': typeof ToggleUsingUsereducerRoute
@@ -150,6 +165,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/cheatsheet/Counter': typeof CheatsheetCounterRoute
   '/timer/using-reducer-machine': typeof TimerUsingReducerMachineRoute
   '/timer/using-xstate-timer': typeof TimerUsingXstateTimerRoute
   '/toggle/using-usereducer': typeof ToggleUsingUsereducerRoute
@@ -162,6 +178,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/cheatsheet/Counter': typeof CheatsheetCounterRoute
   '/timer/using-reducer-machine': typeof TimerUsingReducerMachineRoute
   '/timer/using-xstate-timer': typeof TimerUsingXstateTimerRoute
   '/toggle/using-usereducer': typeof ToggleUsingUsereducerRoute
@@ -175,6 +192,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/cheatsheet/Counter'
     | '/timer/using-reducer-machine'
     | '/timer/using-xstate-timer'
     | '/toggle/using-usereducer'
@@ -185,6 +203,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/cheatsheet/Counter'
     | '/timer/using-reducer-machine'
     | '/timer/using-xstate-timer'
     | '/toggle/using-usereducer'
@@ -195,6 +214,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/cheatsheet/Counter'
     | '/timer/using-reducer-machine'
     | '/timer/using-xstate-timer'
     | '/toggle/using-usereducer'
@@ -207,6 +227,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CheatsheetCounterRoute: typeof CheatsheetCounterRoute
   TimerUsingReducerMachineRoute: typeof TimerUsingReducerMachineRoute
   TimerUsingXstateTimerRoute: typeof TimerUsingXstateTimerRoute
   ToggleUsingUsereducerRoute: typeof ToggleUsingUsereducerRoute
@@ -218,6 +239,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CheatsheetCounterRoute: CheatsheetCounterRoute,
   TimerUsingReducerMachineRoute: TimerUsingReducerMachineRoute,
   TimerUsingXstateTimerRoute: TimerUsingXstateTimerRoute,
   ToggleUsingUsereducerRoute: ToggleUsingUsereducerRoute,
@@ -238,6 +260,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
+        "/cheatsheet/Counter",
         "/timer/using-reducer-machine",
         "/timer/using-xstate-timer",
         "/toggle/using-usereducer",
@@ -251,6 +274,9 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.tsx"
+    },
+    "/cheatsheet/Counter": {
+      "filePath": "cheatsheet/Counter.tsx"
     },
     "/timer/using-reducer-machine": {
       "filePath": "timer/using-reducer-machine.tsx"
