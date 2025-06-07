@@ -70,6 +70,13 @@ export const Route = createRootRoute({
           >
             Fetch Dog Image
           </Link>
+
+          <Link
+            to="/cheatsheet/OnOff"
+            className="[&.active]:font-bold hover:text-gray-300 transition"
+          >
+            On Off
+          </Link>
         </nav>
       </aside>
 
